@@ -1,21 +1,24 @@
-package com.adamdrsinc.StoreSpringBoot.customer;
+package com.adamdrsinc.StoreSpringBoot.product;
 
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 
-public record Customer(
+public record Product(
         @Id
         Integer id,
 
         @NotEmpty
-        String firstName,
+        String name,
 
-        @NotEmpty
-        String lastName,
+        @NotNull
+        Double price,
 
-        @NotEmpty
-        String customerEmail,
+        String description,
+
+        @NotNull
+        Long stockCount,
 
         @Version
         Integer version

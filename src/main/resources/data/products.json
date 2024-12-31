@@ -1,0 +1,39 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "chicken tenders",
+      "price": 3.99,
+      "description": "Crispy Chicken Tenders",
+      "stockCount": 10
+    },
+    {
+      "id": 2,
+      "name": "creamsicle",
+      "price": 0.99,
+      "description": "Creamsicle",
+      "stockCount": 10
+    },
+    {
+      "id": 3,
+      "name": "strawberry tart",
+      "price": 5.99,
+      "description": "A sweet strawberry tart.",
+      "stockCount": 10
+    },
+    {
+      "id": 4,
+      "name": "hotpocket",
+      "price": 1.99,
+      "description": "Microwaveable hotpockets.",
+      "stockCount": 10
+    },
+    {
+      "id": 5,
+      "name": "coconut creamer",
+      "price": 2.99,
+      "description": "creamy coconuter",
+      "stockCount": 10
+    }
+  ]
+}

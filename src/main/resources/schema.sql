@@ -1,33 +1,39 @@
 DROP TABLE IF EXISTS Cart, Payment, Customer, CustomerOrder, Product;
 
 CREATE TABLE Product (
-     P_ID INT PRIMARY KEY,
-     Name VARCHAR(255),
-     Price DECIMAL(10, 2),
-     Description TEXT
+     id INT PRIMARY KEY,
+     name VARCHAR(255),
+     price DECIMAL(10, 2),
+     stock_count INT,
+     description TEXT,
+    version INT
 );
 
 CREATE TABLE CustomerOrder (
-   Order_ID INT PRIMARY KEY,
-   Order_Amount DECIMAL(10, 2),
-   Order_Date DATE
+   id INT PRIMARY KEY,
+   order_amount DECIMAL(10, 2),
+   order_date DATE,
+    version INT
 );
 
 CREATE TABLE Customer (
-    Customer_ID INT PRIMARY KEY,
-    FirstName VARCHAR(255),
-    LastName VARCHAR(255),
-    Email VARCHAR(255)
+                          id INT PRIMARY KEY,
+                          first_name VARCHAR(255),
+                          last_name VARCHAR(255),
+                          customer_email VARCHAR(255),
+                          version INT
 );
-
 CREATE TABLE Payment (
-     Payment_ID INT PRIMARY KEY,
-     Type VARCHAR(50),
-     Amount DECIMAL(10, 2)
+     id INT PRIMARY KEY,
+     type VARCHAR(50),
+     amount DECIMAL(10, 2),
+    version INT
 );
 
 CREATE TABLE Cart (
-  Cart_ID INT PRIMARY KEY,
-  Customer_ID INT,
-  FOREIGN KEY (Customer_ID) REFERENCES Customer(Customer_ID)
+  id INT PRIMARY KEY,
+  customer_ID INT,
+  version INT,
+  FOREIGN KEY (customer_ID) REFERENCES Customer(id)
+
 );

@@ -11,13 +11,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/customer")
 public class CustomerController {
-    private final CustomerRepositoryCustomImpl customerRepoCustom;
     private final CustomerRepository customerRepo;
 
-    public CustomerController(CustomerRepositoryCustomImpl customerRepoCustom,
-                              CustomerRepository customerRepo){
+
+    public CustomerController(CustomerRepository customerRepo){
         this.customerRepo = customerRepo;
-        this.customerRepoCustom = customerRepoCustom;
     }
 
     @GetMapping("/all")
@@ -25,7 +23,7 @@ public class CustomerController {
         return customerRepo.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     Customer findById(@PathVariable Integer id){
         var oCustomer = customerRepo.findById(id);
         if(oCustomer.isEmpty()){
@@ -34,9 +32,9 @@ public class CustomerController {
         return oCustomer.get();
     }
 
-    @GetMapping("/{email}")
-    Customer findByEmail(@PathVariable String email){
-        var oCustomer = customerRepoCustom.findByEmail(email);
+    @GetMapping("/email/{email}")
+    Customer findCustomerByEmail(@PathVariable String email){
+        var oCustomer = customerRepo.findCustomerByCustomerEmail(email);
         if(oCustomer.isEmpty())
             throw new CustomerNotFoundException("Customer with email {" + email + "} not found.");
         return oCustomer.get();
@@ -45,10 +43,10 @@ public class CustomerController {
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     void create(@Valid @RequestBody Customer newCustomer){
-        var oCustomer = customerRepoCustom.findByEmail(newCustomer.Email());
+        var oCustomer = customerRepo.findCustomerByCustomerEmail(newCustomer.customerEmail());
         if(oCustomer.isPresent()){
             throw new CustomerAlreadyExistsException(
-                    "Customer with email {" + newCustomer.Email() + "} already exists.");
+                    "Customer with email {" + newCustomer.customerEmail() + "} already exists.");
         }
         customerRepo.save(newCustomer);
     }

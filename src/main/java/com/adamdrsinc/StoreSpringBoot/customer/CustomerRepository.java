@@ -6,8 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface CustomerRepository extends ListCrudRepository<Customer, Integer>
-{
-
+public interface CustomerRepository extends ListCrudRepository<Customer, Integer> {
+    Optional<Customer> findCustomerByCustomerEmail(String email);
 }
 
