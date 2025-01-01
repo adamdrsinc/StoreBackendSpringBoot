@@ -21,6 +21,8 @@ public interface ProductRepository extends ListCrudRepository<Product, Integer> 
 
     @Modifying
     @Transactional
-    @Query("UPDATE Product SET name = :name, price = :price, description = :description, stock_count = :stockCount WHERE id = :id")
-    void updateProductById(@Param("id") Integer id, @Param("name") String name, @Param("price") Double price, @Param("description") String description, @Param("stockCount") Long stockCount);
+    @Query("UPDATE Product SET name = :name, price = :price, " +
+            "description = :description, stock_count = :stockCount WHERE id = :id")
+    void updateProductById(@Param("id") Integer id, @Param("name") String name, @Param("price") Double price,
+                           @Param("description") String description, @Param("stockCount") Long stockCount);
 }
