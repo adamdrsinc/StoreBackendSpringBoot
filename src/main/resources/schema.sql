@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS Cart, Payment, Customer, CustomerOrder, Product;
+DROP TABLE IF EXISTS CartContents, Cart, Payment, Customer, CustomerOrder, Product;
 
 CREATE TABLE Product (
      id INT PRIMARY KEY,
@@ -37,3 +37,12 @@ CREATE TABLE Cart (
   FOREIGN KEY (customer_ID) REFERENCES Customer(id)
 
 );
+
+CREATE TABLE CartContents(
+    product_ID INT,
+    customer_ID INT,
+    quantity INT,
+    PRIMARY KEY(product_ID, customer_ID),
+    FOREIGN KEY (customer_ID) REFERENCES Customer(id),
+    FOREIGN KEY (product_ID) REFERENCES Product(id)
+)

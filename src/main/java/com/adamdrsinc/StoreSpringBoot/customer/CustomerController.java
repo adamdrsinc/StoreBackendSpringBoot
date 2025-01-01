@@ -43,10 +43,10 @@ public class CustomerController {
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     void create(@Valid @RequestBody Customer newCustomer){
-        var oCustomer = customerRepo.findCustomerByCustomerEmail(newCustomer.customerEmail());
+        var oCustomer = customerRepo.findCustomerByCustomerEmail(newCustomer.getCustomerEmail());
         if(oCustomer.isPresent()){
             throw new CustomerAlreadyExistsException(
-                    "Customer with email {" + newCustomer.customerEmail() + "} already exists.");
+                    "Customer with email {" + newCustomer.getCustomerEmail() + "} already exists.");
         }
         customerRepo.save(newCustomer);
     }

@@ -1,20 +1,21 @@
 package com.adamdrsinc.StoreSpringBoot.cart;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 
-public record Cart(
+@Entity
+public class Cart {
         @Id
-        Integer id,
+        Integer id;
 
         @NotNull
-        Integer customerId,
+        Integer customerId;
 
         @NotNull
-        Integer cartContentsId,
+        Integer cartContentsId;
 
         @Version
-        Long version
-) {
+        Long version;
 }

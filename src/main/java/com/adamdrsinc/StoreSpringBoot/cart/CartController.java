@@ -18,6 +18,7 @@ public class CartController {
         this.productRepo = productRepo;
     }
 
+    //TODO: Implement Cart.addProductToCart
     @PutMapping("/addProduct/{cartId}/{productId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void addProductToCart(@PathVariable Integer cartId, @PathVariable Integer productId) {
@@ -33,7 +34,7 @@ public class CartController {
 
         Cart cart = oCart.get();
         Product product = oProduct.get();
-        cart.addProduct(product);
+        //cart.addProduct(product);
         cartRepo.save(cart);
     }
 }

@@ -16,11 +16,9 @@ import java.util.List;
 public class ProductController {
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
     private final ProductRepository productRepo;
-    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    public ProductController(ProductRepository productRepo, NamedParameterJdbcTemplate namedParameterJdbcTemplate){
+    public ProductController(ProductRepository productRepo){
         this.productRepo = productRepo;
-        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
 
     @GetMapping("/all")
@@ -49,16 +47,16 @@ public class ProductController {
     void create(@Valid @RequestBody Product newProduct){
         Product copy = new Product(
                 null,
-                newProduct.name().toLowerCase(),
-                newProduct.price(),
-                newProduct.description(),
-                newProduct.stockCount(),
+                newProduct.getName().toLowerCase(),
+                newProduct.getPrice(),
+                newProduct.getDescription(),
+                newProduct.getStockCount(),
                 null
         );
 
-        var oProduct = productRepo.findProductByName(copy.name());
+        var oProduct = productRepo.findProductByName(copy.getName().toLowerCase());
         if(oProduct.isPresent()){
-            throw new ProductAlreadyExistsException("Product with name {" + copy.name() + "} already exists.");
+            throw new ProductAlreadyExistsException("Product with name {" + copy.getName() + "} already exists.");
         }
         productRepo.save(copy);
     }
@@ -72,8 +70,8 @@ public class ProductController {
         }
 
         productRepo.updateProductById(
-                id, newProduct.name().toLowerCase(), newProduct.price(),
-                newProduct.description(), newProduct.stockCount()
+                id, newProduct.getName().toLowerCase(), newProduct.getPrice(),
+                newProduct.getDescription(), newProduct.getStockCount()
         );
     }
 
@@ -86,7 +84,6 @@ public class ProductController {
         productRepo.save(oProduct.get());
     }
 
-    @PutMapping("/update/price")
 
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
