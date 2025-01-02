@@ -2,33 +2,48 @@
   "customers": [
     {
       "id": 1,
+      "username": "adam",
+      "customerEmail": "adam.bennett@gmail.com",
+      "password": "$2a$12$QqSVE6gZdYnoblTTkjZhT.gXcMyiW6by7RD/7NLBEJz5JOfXMokxG",
+      "created": "2023-10-04T12:00:00",
       "firstName": "Adam",
-      "lastName": "Bennett",
-      "customerEmail": "adam.bennett@gmail.com"
+      "lastName": "Bennett"
     },
     {
       "id": 2,
+      "username": "ben",
+      "customerEmail": "ben.bennett@gmail.com",
+      "password": "$2a$12$QqSVE6gZdYnoblTTkjZhT.gXcMyiW6by7RD/7NLBEJz5JOfXMokxG",
+      "created": "2023-10-04T12:00:00",
       "firstName": "Ben",
-      "lastName": "Bennett",
-      "customerEmail": "ben.bennett@gmail.com"
+      "lastName": "Bennett"
     },
     {
       "id": 3,
+      "username": "charlie",
+      "customerEmail": "charlie.bennett@gmail.com",
+      "password": "$2a$12$QqSVE6gZdYnoblTTkjZhT.gXcMyiW6by7RD/7NLBEJz5JOfXMokxG",
+      "created": "2023-10-04T12:00:00",
       "firstName": "Charlie",
-      "lastName": "Bennett",
-      "customerEmail": "charlie.bennett@gmail.com"
+      "lastName": "Bennett"
     },
     {
       "id": 4,
+      "username": "derek",
+      "customerEmail": "derek.bennett@gmail.com",
+      "password": "$2a$12$QqSVE6gZdYnoblTTkjZhT.gXcMyiW6by7RD/7NLBEJz5JOfXMokxG",
+      "created": "2023-10-04T12:00:00",
       "firstName": "Derek",
-      "lastName": "Bennett",
-      "customerEmail": "derek.bennett@gmail.com"
+      "lastName": "Bennett"
     },
     {
       "id": 5,
+      "username": "eli",
+      "customerEmail": "eli.bennett@gmail.com",
+      "password": "$2a$12$QqSVE6gZdYnoblTTkjZhT.gXcMyiW6by7RD/7NLBEJz5JOfXMokxG",
+      "created": "2023-10-04T12:00:00",
       "firstName": "Eli",
-      "lastName": "Bennett",
-      "customerEmail": "eli.bennett@gmail.com"
+      "lastName": "Bennett"
     }
   ]
 }

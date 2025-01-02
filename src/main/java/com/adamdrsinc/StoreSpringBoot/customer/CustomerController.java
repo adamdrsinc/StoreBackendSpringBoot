@@ -24,7 +24,7 @@ public class CustomerController {
     }
 
     @GetMapping("/id/{id}")
-    Customer findById(@PathVariable Integer id){
+    Customer findById(@PathVariable Long id){
         var oCustomer = customerRepo.findById(id);
         if(oCustomer.isEmpty()){
             throw new CustomerNotFoundException("Customer with ID {" + id + "} not found.");
@@ -53,7 +53,7 @@ public class CustomerController {
 
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    void update(@Valid @RequestBody Customer newCustomer, @PathVariable Integer id){
+    void update(@Valid @RequestBody Customer newCustomer, @PathVariable Long id){
         var oCustomer = customerRepo.findById(id);
         if(oCustomer.isEmpty()){
             throw new CustomerNotFoundException("Customer with ID {" + id + "} not found. Update failed.");
@@ -63,7 +63,7 @@ public class CustomerController {
 
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    void delete(@PathVariable Integer id){
+    void delete(@PathVariable Long id){
         var oCustomer = customerRepo.findById(id);
         if(oCustomer.isEmpty()){
             throw new CustomerNotFoundException("Customer with ID {" + id + "} not found. Delete failed.");

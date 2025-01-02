@@ -1,33 +1,51 @@
 package com.adamdrsinc.StoreSpringBoot.customer;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-import org.springframework.data.annotation.Version;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 @Entity
-public class Customer{
+public class Customer implements UserDetails {
         @Id
-        Integer id;
+        private Integer id;
 
-        @NotEmpty
-        String firstName;
+        @Column(unique = true, nullable = false, updatable = false)
+        private String username;
 
-        @NotEmpty
-        String lastName;
+        @Column(name = "customer_email", unique = true, nullable = false)
+        private String customerEmail;
 
-        @NotEmpty
-        String customerEmail;
+        @Column(name = "password", nullable = false)
+        private String password;
 
-        @Version
-        Integer version;
+        @Column(name = "first_name")
+        private String firstName;
 
-        public Customer(Integer id, String firstName, String lastName, String customerEmail, Integer version) {
+        @Column(name = "last_name")
+        private String lastName;
+
+        @Column(updatable = false)
+        @Convert(converter = Jsr310JpaConverters.LocalDateTimeConverter.class)
+        @CreationTimestamp
+        private LocalDateTime created;
+
+        public Customer(Integer id, LocalDateTime created, String username, String password, String firstName, String lastName, String customerEmail) {
                 this.id = id;
                 this.firstName = firstName;
                 this.lastName = lastName;
                 this.customerEmail = customerEmail;
-                this.version = version;
+                this.password = password;
+                this.username = username;
+                this.created = created;
         }
 
         public Customer() {
@@ -66,11 +84,38 @@ public class Customer{
                 this.customerEmail = customerEmail;
         }
 
-        public Integer getVersion() {
-                return version;
+        @Override
+        public Collection<? extends GrantedAuthority> getAuthorities() {
+                return null;
         }
 
-        public void setVersion(Integer version) {
-                this.version = version;
+        @Override
+        public String getPassword() {
+                return password;
+        }
+
+        @Override
+        public String getUsername() {
+                return username;
+        }
+
+        @Override
+        public boolean isAccountNonExpired() {
+                return UserDetails.super.isAccountNonExpired();
+        }
+
+        @Override
+        public boolean isAccountNonLocked() {
+                return UserDetails.super.isAccountNonLocked();
+        }
+
+        @Override
+        public boolean isCredentialsNonExpired() {
+                return UserDetails.super.isCredentialsNonExpired();
+        }
+
+        @Override
+        public boolean isEnabled() {
+                return UserDetails.super.isEnabled();
         }
 }
