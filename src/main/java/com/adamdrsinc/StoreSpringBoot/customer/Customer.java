@@ -2,20 +2,23 @@ package com.adamdrsinc.StoreSpringBoot.customer;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Customer implements UserDetails {
         @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Integer id;
 
         @Column(unique = true, nullable = false, updatable = false)
@@ -24,6 +27,7 @@ public class Customer implements UserDetails {
         @Column(name = "customer_email", unique = true, nullable = false)
         private String customerEmail;
 
+        @Setter
         @Column(name = "password", nullable = false)
         private String password;
 
@@ -38,7 +42,13 @@ public class Customer implements UserDetails {
         @CreationTimestamp
         private LocalDateTime created;
 
-        public Customer(Integer id, LocalDateTime created, String username, String password, String firstName, String lastName, String customerEmail) {
+        @Column(nullable = false)
+        private String customerRole;
+
+        @Column(nullable = false)
+        private Boolean isEnabled;
+
+        /*public Customer(Integer id, LocalDateTime created, String username, String password, String firstName, String lastName, String customerEmail, String role) {
                 this.id = id;
                 this.firstName = firstName;
                 this.lastName = lastName;
@@ -46,57 +56,13 @@ public class Customer implements UserDetails {
                 this.password = password;
                 this.username = username;
                 this.created = created;
-        }
+                this.customerRole = role;
+        }*/
 
-        public Customer() {
-
-        }
-
-        public Integer getId() {
-                return id;
-        }
-
-        public void setId(Integer id) {
-                this.id = id;
-        }
-
-        public @NotEmpty String getFirstName() {
-                return firstName;
-        }
-
-        public void setFirstName(@NotEmpty String firstName) {
-                this.firstName = firstName;
-        }
-
-        public @NotEmpty String getLastName() {
-                return lastName;
-        }
-
-        public void setLastName(@NotEmpty String lastName) {
-                this.lastName = lastName;
-        }
-
-        public @NotEmpty String getCustomerEmail() {
-                return customerEmail;
-        }
-
-        public void setCustomerEmail(@NotEmpty String customerEmail) {
-                this.customerEmail = customerEmail;
-        }
 
         @Override
         public Collection<? extends GrantedAuthority> getAuthorities() {
                 return null;
-        }
-
-        @Override
-        public String getPassword() {
-                return password;
-        }
-
-        @Override
-        public String getUsername() {
-                return username;
         }
 
         @Override

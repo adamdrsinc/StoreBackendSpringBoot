@@ -12,10 +12,13 @@ import java.util.List;
 @RequestMapping("/api/customer")
 public class CustomerController {
     private final CustomerRepository customerRepo;
+    private final CustomerService customerService;
 
 
-    public CustomerController(CustomerRepository customerRepo){
+    public CustomerController(CustomerRepository customerRepo,
+                              CustomerService customerService){
         this.customerRepo = customerRepo;
+        this.customerService = customerService;
     }
 
     @GetMapping("/all")
@@ -48,7 +51,10 @@ public class CustomerController {
             throw new CustomerAlreadyExistsException(
                     "Customer with email {" + newCustomer.getCustomerEmail() + "} already exists.");
         }
-        customerRepo.save(newCustomer);
+
+        Customer customer = customerService.createCustomer(newCustomer);
+
+        customerRepo.save(customer);
     }
 
     @PutMapping("/update/{id}")
@@ -70,5 +76,6 @@ public class CustomerController {
         }
         customerRepo.delete(oCustomer.get());
     }
+
 
 }

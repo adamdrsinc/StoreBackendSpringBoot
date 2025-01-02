@@ -1,4 +1,4 @@
-package com.adamdrsinc.StoreSpringBoot.regexpressions;
+package com.adamdrsinc.StoreSpringBoot.misc.regexpressions;
 
 public class RegExPatterns {
     public static final String ALPHABETIC = "^[a-zA-Z]+$";

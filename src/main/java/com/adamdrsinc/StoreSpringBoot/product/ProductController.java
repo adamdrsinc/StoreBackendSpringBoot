@@ -46,12 +46,11 @@ public class ProductController {
     @ResponseStatus(HttpStatus.CREATED)
     void create(@Valid @RequestBody Product newProduct){
         Product copy = new Product(
-                null,
+                newProduct.getId(),
                 newProduct.getName().toLowerCase(),
                 newProduct.getPrice(),
                 newProduct.getDescription(),
-                newProduct.getStockCount(),
-                null
+                newProduct.getStockCount()
         );
 
         var oProduct = productRepo.findProductByName(copy.getName().toLowerCase());

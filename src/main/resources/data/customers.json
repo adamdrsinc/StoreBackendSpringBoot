@@ -1,49 +1,55 @@
 {
   "customers": [
     {
-      "id": 1,
+
       "username": "adam",
       "customerEmail": "adam.bennett@gmail.com",
-      "password": "$2a$12$QqSVE6gZdYnoblTTkjZhT.gXcMyiW6by7RD/7NLBEJz5JOfXMokxG",
+      "password": "abc",
       "created": "2023-10-04T12:00:00",
       "firstName": "Adam",
-      "lastName": "Bennett"
+      "lastName": "Bennett",
+      "customerRole": "ADMIN",
+      "isEnabled" : 1
     },
     {
-      "id": 2,
       "username": "ben",
       "customerEmail": "ben.bennett@gmail.com",
-      "password": "$2a$12$QqSVE6gZdYnoblTTkjZhT.gXcMyiW6by7RD/7NLBEJz5JOfXMokxG",
+      "password": "abc",
       "created": "2023-10-04T12:00:00",
       "firstName": "Ben",
-      "lastName": "Bennett"
+      "lastName": "Bennett",
+      "customerRole": "USER",
+      "isEnabled" : 1
     },
     {
-      "id": 3,
       "username": "charlie",
       "customerEmail": "charlie.bennett@gmail.com",
-      "password": "$2a$12$QqSVE6gZdYnoblTTkjZhT.gXcMyiW6by7RD/7NLBEJz5JOfXMokxG",
+      "password": "abc",
       "created": "2023-10-04T12:00:00",
       "firstName": "Charlie",
-      "lastName": "Bennett"
+      "lastName": "Bennett",
+      "customerRole": "ADMIN",
+      "isEnabled" : 1
     },
     {
-      "id": 4,
       "username": "derek",
       "customerEmail": "derek.bennett@gmail.com",
-      "password": "$2a$12$QqSVE6gZdYnoblTTkjZhT.gXcMyiW6by7RD/7NLBEJz5JOfXMokxG",
+      "password": "abc",
       "created": "2023-10-04T12:00:00",
       "firstName": "Derek",
-      "lastName": "Bennett"
+      "lastName": "Bennett",
+      "customerRole": "ADMIN",
+      "isEnabled" : 1
     },
     {
-      "id": 5,
       "username": "eli",
       "customerEmail": "eli.bennett@gmail.com",
-      "password": "$2a$12$QqSVE6gZdYnoblTTkjZhT.gXcMyiW6by7RD/7NLBEJz5JOfXMokxG",
+      "password": "abc",
       "created": "2023-10-04T12:00:00",
       "firstName": "Eli",
-      "lastName": "Bennett"
+      "lastName": "Bennett",
+      "customerRole": "ADMIN",
+      "isEnabled" : 1
     }
   ]
 }
