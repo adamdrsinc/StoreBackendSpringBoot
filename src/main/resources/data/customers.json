@@ -8,8 +8,17 @@
       "created": "2023-10-04T12:00:00",
       "firstName": "Adam",
       "lastName": "Bennett",
-      "customerRole": "ADMIN",
-      "isEnabled" : 1
+      "customerRole": [
+        {
+          "roleID": 1,
+          "name": "ADMIN"
+        },
+        {
+          "roleID": 2,
+          "name": "USER"
+        }
+      ],
+      "enabled" : 1
     },
     {
       "username": "ben",
@@ -18,8 +27,17 @@
       "created": "2023-10-04T12:00:00",
       "firstName": "Ben",
       "lastName": "Bennett",
-      "customerRole": "USER",
-      "isEnabled" : 1
+      "customerRole": [
+        {
+          "roleID": 1,
+          "name": "ADMIN"
+        },
+        {
+          "roleID": 2,
+          "name": "USER"
+        }
+      ],
+      "enabled" : 0
     },
     {
       "username": "charlie",
@@ -28,8 +46,17 @@
       "created": "2023-10-04T12:00:00",
       "firstName": "Charlie",
       "lastName": "Bennett",
-      "customerRole": "ADMIN",
-      "isEnabled" : 1
+      "customerRole": [
+        {
+          "roleID": 1,
+          "name": "ADMIN"
+        },
+        {
+          "roleID": 2,
+          "name": "USER"
+        }
+      ],
+      "enabled" : 1
     },
     {
       "username": "derek",
@@ -38,8 +65,17 @@
       "created": "2023-10-04T12:00:00",
       "firstName": "Derek",
       "lastName": "Bennett",
-      "customerRole": "ADMIN",
-      "isEnabled" : 1
+      "customerRole": [
+        {
+          "roleID": 1,
+          "name": "ADMIN"
+        },
+        {
+          "roleID": 2,
+          "name": "USER"
+        }
+      ],
+      "enabled" : 1
     },
     {
       "username": "eli",
@@ -48,8 +84,17 @@
       "created": "2023-10-04T12:00:00",
       "firstName": "Eli",
       "lastName": "Bennett",
-      "customerRole": "ADMIN",
-      "isEnabled" : 1
+      "customerRole": [
+        {
+          "roleID": 1,
+          "name": "ADMIN"
+        },
+        {
+          "roleID": 2,
+          "name": "USER"
+        }
+      ],
+      "enabled" : 1
     }
   ]
 }

@@ -1,3 +1,4 @@
+/*
 package com.adamdrsinc.StoreSpringBoot.product;
 
 import com.adamdrsinc.StoreSpringBoot.customer.CustomerJSONDataLoader;
@@ -40,3 +41,4 @@ public class ProductJSONDataLoader implements CommandLineRunner {
 }
 
 
+*/

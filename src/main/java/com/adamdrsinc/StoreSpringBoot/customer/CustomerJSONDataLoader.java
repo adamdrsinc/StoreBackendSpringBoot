@@ -1,3 +1,4 @@
+/*
 package com.adamdrsinc.StoreSpringBoot.customer;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -45,4 +46,4 @@ public class CustomerJSONDataLoader implements CommandLineRunner {
         }
     }
 
-}
+}*/

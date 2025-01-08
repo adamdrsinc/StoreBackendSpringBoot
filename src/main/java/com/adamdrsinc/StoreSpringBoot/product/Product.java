@@ -11,27 +11,30 @@ import org.springframework.data.annotation.Version;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "product")
 public class Product{
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
+        @Column(name = "product_id")
+        private Integer productID;
 
         @Getter
         @Setter
-        @Column(nullable = false)
+        @Column(name = "name", nullable = false)
         private String name;
 
         @Getter
         @Setter
-        @Column(nullable = false)
+        @Column(name = "price", nullable = false)
         private Double price;
 
         @Getter
         @Setter
-        @Column(nullable = false)
+        @Column(name = "description", nullable = false)
         private String description;
 
         @Getter
         @Setter
+        @Column(name = "stock_count")
         private Long stockCount;
 }

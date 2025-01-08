@@ -46,7 +46,7 @@ public class ProductController {
     @ResponseStatus(HttpStatus.CREATED)
     void create(@Valid @RequestBody Product newProduct){
         Product copy = new Product(
-                newProduct.getId(),
+                newProduct.getProductID(),
                 newProduct.getName().toLowerCase(),
                 newProduct.getPrice(),
                 newProduct.getDescription(),

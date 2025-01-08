@@ -1,5 +1,6 @@
 package com.adamdrsinc.StoreSpringBoot.customer;
 
+import com.adamdrsinc.StoreSpringBoot.role.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
@@ -9,19 +10,23 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "customer")
 public class Customer implements UserDetails {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
+        @Column(name = "customer_id")
+        private Integer customerID;
 
-        @Column(unique = true, nullable = false, updatable = false)
+        @Column(name = "username", unique = true, nullable = false, updatable = false)
         private String username;
 
         @Column(name = "customer_email", unique = true, nullable = false)
@@ -37,16 +42,24 @@ public class Customer implements UserDetails {
         @Column(name = "last_name")
         private String lastName;
 
-        @Column(updatable = false)
+        @Column(name = "created", updatable = false)
         @Convert(converter = Jsr310JpaConverters.LocalDateTimeConverter.class)
         @CreationTimestamp
         private LocalDateTime created;
 
-        @Column(nullable = false)
-        private String customerRole;
 
-        @Column(nullable = false)
-        private Boolean isEnabled;
+        @Column(name = "customer_role", nullable = false)
+        @Getter
+        @Setter
+        @ManyToMany(fetch = FetchType.EAGER)
+        @JoinTable(
+                name = "customer_roles", joinColumns = @JoinColumn(name = "customer_id", referencedColumnName = "customer_id"),
+                inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id")
+        )
+        private List<Role> customerRole = new ArrayList<>();
+
+        @Column(name = "enabled", nullable = false)
+        private Boolean enabled = true;
 
         /*public Customer(Integer id, LocalDateTime created, String username, String password, String firstName, String lastName, String customerEmail, String role) {
                 this.id = id;
